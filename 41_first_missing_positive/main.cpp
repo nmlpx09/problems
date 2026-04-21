@@ -46,6 +46,9 @@ int f(const std::vector<int>& v) {
         }
         max = e > max ? e : max;
     }
+    if (s.count(1) == 0) {
+        m[1] = 1;
+    }
     int r = max + 1;
     for (const auto& [e, c]: m) {
         if (e <= 0) {
@@ -55,14 +58,11 @@ int f(const std::vector<int>& v) {
            r = r < e ? r : e;
         }
     }
-    if (r > 1 && s.count(1) == 0) {
-        return 1;
-    }
     return r;
 }
 
 int main() {
-    std::vector<int>  v = {7,8,9,11,12};
+    std::vector<int>  v = {1,2,0};
     std::cout << f(v);
     return 0;
 }
